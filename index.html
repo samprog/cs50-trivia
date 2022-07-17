@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                //When correct button is clicked, change colour to green
+                let CorrectButton = document.querySelector('.correct');
+                CorrectButton.addEventListener('click', function() {
+                    CorrectButton.style.backgroundColor = 'green';
+                    document.querySelector('#answer1').innerHTML = 'Correct!';
+                });
+                //When incorrect button is clicked, change colour to red
+                let IncorrectButtons = document.querySelectorAll('.incorrect');
+                for (let i = 0; i < IncorrectButtons.length; i++) {
+                    IncorrectButtons[i].addEventListener('click', function() {
+                        IncorrectButtons[i].style.backgroundColor = 'red';
+                        document.querySelector('#answer1').innerHTML = 'Incorrect';
+                    });}
+
+                //Second Question
+                document.querySelector('#CheckButton').addEventListener('click', function() {
+                    let input = document.querySelector('#answer');
+                    if (input.value === "Kiev" || input.value === "Kyiv") {
+                        input.style.backgroundColor = 'green';
+                        document.querySelector('#answer2').innerHTML = 'Correct!';
+                    } else {
+                        input.style.backgroundColor = 'red';
+                        document.querySelector('#answer2').innerHTML = 'Incorrect';
+                    }
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <h3>What is the population per 1 square kilometer in Ukraine?</h3>
+                <button class="incorrect">from 20 to 40</button>
+                <button class="incorrect">from 40 to 60</button>
+                <button class="correct">from 60 to 80</button>
+                <button class="incorrect">from 80 to 100</button>
+                <p id="answer1"></p>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <h3>What is the capital of Ukraine?</h3>
+                <input type="text" id="answer" autocomplete="off">
+                <input type="submit" id="CheckButton">
+                <p id="answer2"></p>
+            </div>
+        </div>
+    </body>
+</html>
